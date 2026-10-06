@@ -475,7 +475,7 @@ class TicketIntegration {
     completedVia = "manual",
     actorId = null,
     convocationId = null,
-    notifyInChannel = true,
+    notifyInChannel = false,
     reasonKey = null,
     force = false
   }) {
