@@ -1,0 +1,32 @@
+{
+  "name": "kaelys-convoc",
+  "version": "1.0.0",
+  "description": "Bot Discord de modération Kaelys Convoc — système de convocations professionnelles, persistant, sécurisé.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch --watch-preserve-output index.js",
+    "deploy": "node deploy-commands.js",
+    "deploy:dev": "set MODE=dev&& node deploy-commands.js",
+    "test": "echo \"Pas de tests unitaires configurés.\" && exit 0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "keywords": [
+    "discord",
+    "discord.js",
+    "moderation",
+    "convocation",
+    "kaelys"
+  ],
+  "author": "Kaelys",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cron": "^3.1.7",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.7.1"
+  }
+}
