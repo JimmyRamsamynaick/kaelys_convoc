@@ -18,7 +18,7 @@ module.exports = {
       log_file: "./logs/pm2-combined.log",
       time: true,
       merge_logs: true,
-      max_memory_restart: "1.5G",
+      max_memory_restart: "1536M",
       env: {
         NODE_ENV: "production"
       }
