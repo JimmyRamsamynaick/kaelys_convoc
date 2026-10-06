@@ -56,7 +56,13 @@ module.exports = {
         .setName("raison")
         .setDescription("Filtre sur la clé de raison (ex: verification).")
         .setRequired(false)
-        .setAutocomplete(true)
+        .addChoices(
+          { name: "Vérification", value: "verification" },
+          { name: "Convocation", value: "convocation" },
+          { name: "Modération", value: "moderation" },
+          { name: "Entretien", value: "entretien" },
+          { name: "Autre", value: "autre" }
+        )
     )
     .addIntegerOption((o) =>
       o

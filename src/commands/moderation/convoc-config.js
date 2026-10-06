@@ -9,7 +9,17 @@ module.exports = {
     .setDescription("Configurer les messages, délais et sanctions d'un type de convocation.")
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((o) =>
-      o.setName("type").setDescription("Clé du type de convocation (ex: verification)").setRequired(true).setAutocomplete(true)
+      o
+        .setName("type")
+        .setDescription("Clé du type de convocation (ex: verification)")
+        .setRequired(true)
+        .addChoices(
+          { name: "Vérification", value: "verification" },
+          { name: "Convocation", value: "convocation" },
+          { name: "Modération", value: "moderation" },
+          { name: "Entretien", value: "entretien" },
+          { name: "Autre", value: "autre" }
+        )
     )
     .addStringOption((o) => o.setName("label").setDescription("Libellé affiché").setRequired(false))
     .addStringOption((o) => o.setName("message").setDescription("Message de convocation").setRequired(false).setMaxLength(1000))

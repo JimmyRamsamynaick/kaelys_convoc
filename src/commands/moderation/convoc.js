@@ -15,7 +15,13 @@ module.exports = {
         .setName("raison")
         .setDescription("Type de convocation")
         .setRequired(true)
-        .setAutocomplete(true)
+        .addChoices(
+          { name: "Vérification", value: "verification" },
+          { name: "Convocation", value: "convocation" },
+          { name: "Modération", value: "moderation" },
+          { name: "Entretien", value: "entretien" },
+          { name: "Autre", value: "autre" }
+        )
     )
     .addStringOption((opt) =>
       opt
