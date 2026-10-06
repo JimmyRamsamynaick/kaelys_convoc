@@ -10,9 +10,32 @@ class CommandHandler {
 
   async load() {
     const absolute = path.resolve(this.commandsDir);
-    const entries = fs.readdirSync(absolute, { withFileTypes: true, recursive: true }).filter((e) => e.isFile() && e.name.endsWith(".js"));
-    for (const entry of entries) {
-      const full = path.join(entry.path || absolute, entry.name);
+
+    function walk(dir) {
+      const out = [];
+      const stack = [dir];
+      while (stack.length) {
+        const cur = stack.pop();
+        let entries;
+        try {
+          entries = fs.readdirSync(cur, { withFileTypes: true });
+        } catch (_) {
+          continue;
+        }
+        for (const e of entries) {
+          const full = path.join(cur, e.name);
+          if (e.isDirectory()) {
+            stack.push(full);
+          } else if (e.isFile() && e.name.endsWith(".js")) {
+            out.push(full);
+          }
+        }
+      }
+      return out;
+    }
+
+    const entries = walk(absolute);
+    for (const full of entries) {
       try {
         delete require.cache[require.resolve(full)];
         const mod = require(full);
