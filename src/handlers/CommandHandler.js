@@ -14,6 +14,7 @@ class CommandHandler {
     for (const entry of entries) {
       const full = path.join(entry.path || absolute, entry.name);
       try {
+        delete require.cache[require.resolve(full)];
         const mod = require(full);
         const command = mod.default || mod;
         if (!command?.data?.name) {
