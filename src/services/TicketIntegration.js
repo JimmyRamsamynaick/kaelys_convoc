@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Convocation = require("../models/Convocation");
 const GuildConfigService = require("./GuildConfigService");
 const ModLogService = require("./ModLogService");
