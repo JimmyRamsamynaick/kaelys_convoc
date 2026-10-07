@@ -8,7 +8,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-mark-action")
     .setDescription("Marque manuellement l'action d'une convocation comme effectuée.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addUserOption((o) => o.setName("membre").setDescription("Membre concerné par la convocation.").setRequired(true))
     .addStringOption((o) =>
       o

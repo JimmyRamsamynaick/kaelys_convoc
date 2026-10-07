@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-mark-ticket")
     .setDescription("Marque la convocation open_ticket comme résolue (lien message / salon+id / membre).")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addStringOption((o) =>
       o
         .setName("message")

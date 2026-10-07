@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-scan-tickets")
     .setDescription("Scanne les N derniers messages d'un salon à la recherche de tickets ouverts.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addChannelOption((o) =>
       o
         .setName("salon")

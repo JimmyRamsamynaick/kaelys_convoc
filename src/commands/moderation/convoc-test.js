@@ -26,7 +26,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-test")
     .setDescription("🛠️ Commande admin de test : convocation avec délai personnalisé.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addUserOption((o) => o.setName("membre").setDescription("Membre à convoquer (test).").setRequired(true))
     .addStringOption((o) =>
       o

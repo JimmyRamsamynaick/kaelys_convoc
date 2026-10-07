@@ -41,7 +41,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-list-active")
     .setDescription("Affiche la liste des convocations avec filtres (status, membre, raison, âge).")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .setDMPermission(false)
     .addStringOption((o) =>
       o

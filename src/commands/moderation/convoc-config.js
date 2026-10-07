@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-config")
     .setDescription("Configurer les messages, délais et sanctions d'un type de convocation.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addStringOption((o) =>
       o
         .setName("type")
@@ -62,8 +62,8 @@ module.exports = {
   },
   async execute(interaction) {
     const allowed = await PermissionService.isModerator(interaction.member, interaction.guildId);
-    if (!allowed || !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return interaction.reply({ content: "❌ Permission refusée (Administrateur requis).", flags: 64 });
+    if (!allowed) {
+      return interaction.reply({ content: "❌ Permission refusée (modérateur requis).", flags: 64 });
     }
     await interaction.deferReply({ flags: 64 });
     const key = interaction.options.getString("type", true);

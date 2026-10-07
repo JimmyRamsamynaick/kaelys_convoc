@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-list")
     .setDescription("Afficher les types de convocations disponibles sur ce serveur.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .setDMPermission(false),
   async execute(interaction) {
     const allowed = await PermissionService.isModerator(interaction.member, interaction.guildId);

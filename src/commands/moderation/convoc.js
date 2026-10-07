@@ -6,7 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc")
     .setDescription("Convoquer un membre dans le salon dédié aux convocations.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator | PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .addUserOption((opt) =>
       opt.setName("membre").setDescription("Membre à convoquer").setRequired(true)
     )

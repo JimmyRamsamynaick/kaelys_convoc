@@ -7,7 +7,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("convoc-debug")
     .setDescription("(Admin) Voir le document brut MongoDB d'une convocation (diagnostic fiable).")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
     .setDMPermission(false)
     .addStringOption((o) =>
       o.setName("convocation_id").setDescription("ID Mongo de la convocation (24 hexa).").setRequired(true)
