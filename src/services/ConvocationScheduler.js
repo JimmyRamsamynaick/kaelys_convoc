@@ -106,19 +106,16 @@ class ConvocationScheduler {
       ? convocation.sanctionIfExpired.reminderOffsetsMs
       : [];
     const offsetsActuallyUsed = Array.isArray(offsets) && offsets.length ? offsets : this._fallbackOffsets(convocation);
+    const sentOffsets = new Set((convocation.reminderOffsetsSentMs || []).map((n) => Number(n)));
     for (const offset of offsetsActuallyUsed) {
-      if (msLeft > 0 && msLeft <= offset) {
-        const alreadySent = (convocation.reminderTimestamps || []).some((t) => {
-          const sentMs = t instanceof Date ? t.getTime() : new Date(t).getTime();
-          const expected = convocation.deadlineAt.getTime() - offset;
-          return Math.abs(sentMs - expected) < 60 * 1000;
-        });
-        if (!alreadySent) {
-          await this._sendReminder(convocation, offset, msLeft);
-          convocation.reminderTimestamps.push(new Date());
-          await convocation.save();
-          return;
-        }
+      const offsetNum = Number(offset);
+      if (sentOffsets.has(offsetNum)) continue;
+      if (msLeft > 0 && msLeft <= offsetNum) {
+        await this._sendReminder(convocation, offsetNum, msLeft);
+        sentOffsets.add(offsetNum);
+        convocation.reminderOffsetsSentMs = [...sentOffsets];
+        convocation.reminderTimestamps.push(new Date());
+        await convocation.save();
       }
     }
     if (msLeft <= 0) {

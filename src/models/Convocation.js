@@ -16,6 +16,7 @@ const ConvocationSchema = new mongoose.Schema(
     expiredAt: { type: Date, default: null },
     sanctionedAt: { type: Date, default: null },
     reminderTimestamps: { type: [Date], default: [] },
+    reminderOffsetsSentMs: { type: [Number], default: [] },
     status: {
       type: String,
       required: true,
